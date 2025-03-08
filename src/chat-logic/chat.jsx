@@ -4,7 +4,7 @@ import TreeDiagram from "./diagram"; // Import the TreeDiagram component
 import "./chat.css";
 
 const ChatInterface = () => {
-  const [inputText, setInputText] = useState("");
+  // const [inputText, setInputText] = useState("");
   const [profession, setProfession] = useState("");
   const [selectedProfession, setSelectedProfession] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
@@ -62,7 +62,7 @@ const ChatInterface = () => {
       ]);
     } finally {
       setIsLoading(false);
-      setInputText("");
+      // setInputText("");
     }
   };
 
