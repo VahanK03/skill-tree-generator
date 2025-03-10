@@ -11,6 +11,7 @@ const ChatInterface = () => {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [studyPlan, setStudyPlan] = useState(null); // State to store the study plan
+  const [prompt, setPrompt] = useState("");
 
   // Initialize OpenAI client
   const openai = new OpenAI({
@@ -84,6 +85,17 @@ const ChatInterface = () => {
               onChange={(e) => setProfession(e.target.value)}
               required
               className="profession-input"
+            />
+          </label>
+        </div>
+        <div>
+          <label className="prompt-label">
+            <span className="prompt">Prompt:</span>
+            <textarea 
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+              placeholder="I'm a career changer, I want to become a..."
+              className="prompt-input"
             />
           </label>
         </div>

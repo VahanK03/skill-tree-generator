@@ -57,6 +57,21 @@ select option:hover{
     background-color: yellow;
 }
 
+.prompt-label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.prompt-input{
+    width: 500px;
+    height: 80px;
+    font-size: 14px;
+    left: 60%;
+    position: absolute;
+}
+
 .submit-button{
     width: max-content;
     height: 50px;
