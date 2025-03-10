@@ -15,7 +15,7 @@ const ChatInterface = () => {
   // Initialize OpenAI client
   const openai = new OpenAI({
     apiKey: "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", // Replace with your OpenAI API key
-    dangerouslyAllowBrowser: true, // Allow API calls from the browser (not recommended for production)
+    dangerouslyAllowBrowser: true, 
   });
 
   // Function to send a message to OpenAI
