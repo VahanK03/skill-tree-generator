@@ -21,12 +21,12 @@ const ChatInterface = () => {
 
   // Function to send a message to OpenAI
   const sendMessage = async () => {
-    if (!profession.trim() || !selectedProfession.trim() || !selectedLevel.trim()) return;
+    if (!profession.trim() || !selectedProfession.trim() || !prompt.trim() || !selectedLevel.trim()) return;
 
     setIsLoading(true);
 
     // Format the input text
-    const formattedInputText = `I'm ${profession}, I want to become ${selectedProfession}, my level is for that profession ${selectedLevel}, give me study plan by json format, in answer should be only json (example of answer - {name: "", children: [{name: "", children: [{e.t.c}]}]}), don't use long words in answer, mimium depth 4.`;
+    const formattedInputText = `I'm ${profession}, I want to become ${selectedProfession}, my level is for that profession ${selectedLevel}, ${prompt} (answer by json format), in answer should be only json (example of answer - {name: "", children: [{name: "", children: [{e.t.c}]}]}), don't use long words in answer, mimium depth 4.`;
 
     // Add the user's message to the chat
     setMessages((prevMessages) => [
