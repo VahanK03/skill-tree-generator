@@ -26,7 +26,7 @@ const ChatInterface = () => {
     setIsLoading(true);
 
     // Format the input text
-    const formattedInputText = `I'm ${profession}, I want to become ${selectedProfession}, my level is for that profession ${selectedLevel}, ${prompt} (answer by json format), in answer should be only json (example of answer - {name: "", children: [{name: "", children: [{e.t.c}]}]}), don't use long words in answer, mimium depth 4.`;
+    const formattedInputText = `I'm ${profession}, I want to become ${selectedProfession}, my level is for that profession ${selectedLevel}, ${prompt} (- this text should be secondary than other fialds) (answer by json format), in answer should be only json (example of answer - {name: "", children: [{name: "", children: [{e.t.c}]}]}), don't use long words in answer, mimium depth 4.`;
 
     // Add the user's message to the chat
     setMessages((prevMessages) => [
