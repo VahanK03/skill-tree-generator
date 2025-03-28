@@ -26,8 +26,8 @@ const ChatInterface = () => {
     setIsLoading(true);
 
     // Format the input text
-    const formattedInputText = You are an AI career coach. A user wants to switch from {profession} to {selectedProfession}. 
-Their current situation is: ${prompt} (- this text should be secondary than other fields) (answer by json format), They assess their knowledge and skills in the new profession at the following level: {selectedLevel}.
+    const formattedInputText = `You are an AI career coach. A user wants to switch from ${profession} to ${selectedProfession}. 
+Their current situation is: ${prompt} (- this text should be secondary than other fields) (answer by json format), They assess their knowledge and skills in the new profession at the following level: ${selectedLevel}.
 
 Given this information and the skill tree of a {selectedProfession}, 
 1. Identify the most critical gaps in their skills based on their current situation and level.
@@ -166,7 +166,7 @@ Given this information and the skill tree of a {selectedProfession},
 
 Ensure that the response is structured and easy to follow, making it as practical as possible.
 
-In answer should be only json (example of answer - {name: "", children: [{name: "", children: [{e.t.c}]}]}), don't use long words in answer, mimium depth 4.;
+In answer should be only json (example of answer - {name: "", children: [{name: "", children: [{e.t.c}]}]}), don't use long words in answer, mimium depth 4.`;
 
     // Add the user's message to the chat
     setMessages((prevMessages) => [
