@@ -26,7 +26,147 @@ const ChatInterface = () => {
     setIsLoading(true);
 
     // Format the input text
-    const formattedInputText = `I'm ${profession}, I want to become ${selectedProfession}, my level is for that profession ${selectedLevel}, ${prompt} (- this text should be secondary than other fialds) (answer by json format), in answer should be only json (example of answer - {name: "", children: [{name: "", children: [{e.t.c}]}]}), don't use long words in answer, mimium depth 4.`;
+    const formattedInputText = You are an AI career coach. A user wants to switch from {profession} to {selectedProfession}. 
+Their current situation is: ${prompt} (- this text should be secondary than other fields) (answer by json format), They assess their knowledge and skills in the new profession at the following level: {selectedLevel}.
+
+Given this information and the skill tree of a {selectedProfession}, 
+1. Identify the most critical gaps in their skills based on their current situation and level.
+2. Suggest a step-by-step learning plan tailored to their background.
+3. Provide one actionable first step they can take today.
+4. This is a base example of plan (use this as an example) -
+[
+  {
+      "name": "Identify a problem worth solving",
+      "children": [
+          {
+              "name": "Get to know the user",
+              "children": [
+                  {"name": "Find gains and pains", "children": []},
+                  {"name": "Evaluate how to  define profiles  & segments", "children": []},
+                  {"name": "Create personas", "children": []}
+              ]
+          },
+          {
+              "name": "Identify a user challenge",
+              "children": [
+                  {"name": "Diagnose a user challenge", "children": []},
+                  {"name": "Evaluate existing solutions or alternatives to solve a challenge", "children": []},
+                  {"name": "Construct the user-journey to solve the challenge", "children": []},
+              ]
+          },
+      ]
+  },
+  {
+      "name": "Identify the right solution to the problem",
+      "children": [
+          {
+              "name": "Set a Mission and a Vision",
+              "children": [
+                  {"name": "Write down Mission & Vision", "children": []}
+              ]
+          },
+          {
+              "name": "Research & identify opportunities",
+              "children": [
+                  {"name": "Formulate solution to pains", "children": []},
+                  {"name": "Determine how to measure success", "children": []}
+                  {"name": "Evaluate how solution fits into customers' lives", "children": []},
+              ]
+          },
+          {
+              "name": "Research  the company landscape",
+              "children": [
+                  {"name": "Research company context", "children": []},
+                  {"name": "Evaluate how solution fits  into customers' lives", "children": []},
+                  {"name": "Design business  model", "children": []},
+                  {"name": "Determine what characteristics matter in the competitive landscape", "children": []},
+                  {"name": "Identify competitors & research them", "children": []}
+              ]
+          },
+          {
+              "name": "Estimate the potential of the solution",
+              "children": [
+                  {"name": "Determine how to monetize the solution", "children": []},
+                  {"name": "Estimate expected results", "children": []},
+              ]
+          }
+      ]
+  },
+  {
+      "name": "Build the solution right",
+      "children": [
+          {
+              "name": "Determine  feasibility of  the solution",
+              "children": [
+                  {"name": "Scope the solution", "children": []},
+                  {"name": "Coordinate technical feasibility analysis", "children": []}
+              ]
+          },
+          {
+              "name": "Plan the creation of the solution",
+              "children": [
+                  {"name": "Coordinate technical feasibility analysis", "children": []},
+                  {"name": "Plan how to break-down the solution into small & meaningful steps", "children": []},
+                  {"name": "Identify steakholders", "children": []},
+                  {"name": "Dissect the work in meaningful individual steps", "children": []},
+                  {"name": "Prioritize the work", "children": []}
+              ]
+          },
+          {
+              "name": "Plan the creation of the solution",
+              "children": [
+                  {"name": "Determine how to test if the solution meets quality expectations", "children": []},
+                  {"name": "Manage the execution of the solution", "children": []},
+              ]
+          }
+      ]
+  },
+  {
+      "name": "Bring the solution to the market",
+      "children": [
+          {
+              "name": "Determine  how to measure success",
+              "children": [
+                  {"name": "Propose how to keep track of objectives", "children": []},
+              ]
+          },
+          {
+              "name": "Define how to ship  the solution",
+              "children": [{"name": "Evaluate and choose the most appropriate channels to ship the solution", "children": []},
+                  {"name": "Propose how to bring the solution to the hands of the user", "children": []},
+              ]
+          }
+      ]
+  },
+  {
+      "name": "Expand the solution",
+      "children": [
+          {
+              "name": "Research and formulate  how to protect the solution",
+              "children": [
+                  {"name": "Define the 'Product Moat'", "children": []},
+                  {"name": "Iterative improvements", "children": []},
+                  {"name": "Define engagement strategies", "children": []}
+              ]
+          },
+          {
+              "name": "Research expansion",
+              "children": [
+                  {"name": "Research how to enter adjacent markets", "children": []},
+                  {"name": "Research secondary user-problems", "children": []},
+                  {"name": "Research how to enter adjacent user- segments", "children": []},
+                  {"name": "Define engagement strategies", "children": []},
+                  {"name": "Plan how to pivot", "children": []}
+
+              ]
+          }
+      ]
+  }
+]
+
+Ensure that the response is structured and easy to follow, making it as practical as possible.
+
+In answer should be only json (example of answer - {name: "", children: [{name: "", children: [{e.t.c}]}]}), don't use long words in answer, mimium depth 4.;
 
     // Add the user's message to the chat
     setMessages((prevMessages) => [
