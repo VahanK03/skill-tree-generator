@@ -452,7 +452,7 @@ In answer should be only json (example of answer - {name: "", children: [{name: 
               required
               className="knowledge-level-select"
             >
-              <option value="Beginner">No experience in digital roles</option>
+              <option value="No Experience">No experience in digital roles</option>
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>
               <option value="Expert">Expert</option>
