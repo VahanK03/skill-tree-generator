@@ -33,7 +33,7 @@ Given this information and the skill tree of a {selectedProfession},
 1. Identify the most critical gaps in their skills based on their current situation and level.
 2. Suggest a step-by-step learning plan tailored to their background.
 3. Provide one actionable first step they can take today.
-4. This is a base example of plan (use this as an example, fully analize the example) -
+4. This is a base example of plan (use this as an example) -
 [
   {
       "name": "Identify a problem worth solving",
@@ -395,6 +395,8 @@ In answer should be only json (example of answer - {name: "", children: [{name: 
   return (
     <>
     <div className="chat-interface">
+      <h2 className="chat-title">Ready to Start?</h2>
+      <h3 className="chat-subtitle">Answer a few questions and get your personalized skill tree and first challenge today.</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -402,11 +404,12 @@ In answer should be only json (example of answer - {name: "", children: [{name: 
         }}
       >
         <div>
-          <label>
-            <span className="profession">Your Profession:</span>
-            <textarea
+          <label style={{display: "flex", flexDirection: "column"}}>
+            <span className="profession"><b>What is Your current profession?</b></span>
+            <input
               type="text"
               value={profession}
+              placeholder="Ex. Science Teacher"
               onChange={(e) => setProfession(e.target.value)}
               required
               className="profession-input"
@@ -415,7 +418,7 @@ In answer should be only json (example of answer - {name: "", children: [{name: 
         </div>
         <div>
           <label className="prompt-label">
-            <span className="prompt">Prompt:</span>
+            <span className="prompt"><b>Describe what change you need</b></span>
             <textarea 
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
@@ -426,14 +429,13 @@ In answer should be only json (example of answer - {name: "", children: [{name: 
         </div>
         <div>
           <label>
-            <span className="future-profession">Profession You Want to Become:</span>
+            <span className="future-profession"><b>What digital career do you want to pursue?</b></span>
             <select
               value={selectedProfession}
               onChange={(e) => setSelectedProfession(e.target.value)}
               required
               className="future-profession-select"
             >
-              <option value="">Select a profession</option>
               <option value="Software Engineer">Software Engineer</option>
               <option value="Data Scientist">Data Scientist</option>
               <option value="Product Manager">Product Manager</option>
@@ -443,14 +445,14 @@ In answer should be only json (example of answer - {name: "", children: [{name: 
         </div>
         <div>
           <label>
-            <span className="knowledge-level">Your Knowledge Level:</span>
+            <span className="knowledge-level"><b>What is your experience level with digital roles?</b></span>
             <select
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
               required
               className="knowledge-level-select"
             >
-              <option value="">Select your knowledge level</option>
+              <option value="Beginner">No experience in digital roles</option>
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>
               <option value="Expert">Expert</option>
@@ -458,17 +460,10 @@ In answer should be only json (example of answer - {name: "", children: [{name: 
           </label>
         </div>
         <button type="submit" disabled={isLoading} className="submit-button">
-          {isLoading ? "Generating..." : "Generate"}
+          {isLoading ? "Creating..." : "Create My Skill Tree"}
         </button>
       </form>
-      {/* <div>
-        {messages.map((message, index) => (
-          <div key={index} className={message.role}>
-            <strong>{message.role}:</strong> {message.content}
-          </div>
-        ))}
-      </div> */}
-       {/* Render TreeDiagram with the study plan */}
+     
     </div>
     {studyPlan && 
     <div style={{position: "absolute", top: "130%", width: "100%"}}>

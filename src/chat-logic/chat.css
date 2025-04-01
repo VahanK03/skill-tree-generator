@@ -4,22 +4,32 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 45%;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
+  width: 40%;
+  background-color: #f6f1f1;
   border-radius: 30px;
-  padding: 10px;
-  font-size: 25px;
-  row-gap: 50px;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 20px;
+  padding-right: 20px;
   font-family: 'Lexend';
-    margin-top: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 30px;
+  
+}
+
+form{
+    width: 100%;
+}
+
+.chat-title{
+    justify-self: flex-start;
+}
+
+.chat-subtitle{
+    color: gray;
+    font-weight: 300;
 }
 
 .chat-interface div {
-  border-bottom: 1px gray solid;
   width: 100%;
   height: 100px;
   display: flex;
@@ -28,11 +38,12 @@
 }
 
 .profession-input{
-    width: 300px;
+    width: 100%;
     height: 50px;
     font-size: 18px;
     margin-bottom: 10px;
-    margin-left: 300px;
+    border: none;
+    border-radius: 10px;
 }
 
 .profession-input:focus{
@@ -42,14 +53,17 @@
 
 
 .profession{
-    position: absolute;
-    top: 15%;
+   
 }
 
 select {
-    margin-left: 50px;
+    width: 100%;
     height: 30px;
     font-size: 18px;
+    border: #f6f1f1 solid 1px;
+    border-radius: 10px;
+    height: 50px;
+    color: gray;
 }
 
 select option:hover{
@@ -60,37 +74,44 @@ select option:hover{
 .prompt-label{
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .prompt-input{
-    width: 500px;
+    width: 100%;
     height: 80px;
     font-size: 14px;
-    left: 60%;
-    position: absolute;
+    border: none;
+    border-radius: 10px;
 }
 
 .submit-button{
-    width: max-content;
+    width: 100%;
     height: 50px;
     font-size: 18px;
-    border-radius: 15px;
-    margin-top: 50px;
-    background-color: white;
-    color: black;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    background-color: black;
+    color: #eefa70;
     font-family: "Lexend";
     padding: 10px;
 }
 
 .submit-button:hover {
     animation: fill-yellow 0.9s forwards;
+    color: black;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 @keyframes fill-yellow {
     0% {
-        background-color: white;
+        background-color: black;
     }
     100% {
         background-color: yellow;
