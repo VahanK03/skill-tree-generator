@@ -354,7 +354,7 @@ const ChatInterface = () => {
 
 // In answer should be only json (example of answer - {name: "", children: [{name: "", children: [{e.t.c}]}]}), don't use long words in answer, mimium depth 4.`;
 
-   const formattedInputText = `${prompt}`
+   const formattedInputText = `${prompt} Please provide a concise response in JSON format.`
     // Add the user's message to the chat
     setMessages((prevMessages) => [
       ...prevMessages,
@@ -364,7 +364,7 @@ const ChatInterface = () => {
     try {
       // Send the message to OpenAI
       const completion = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo", // Use the GPT-3.5 Turbo model
+        model: "gpt-4o", // Use the GPT-3.5 Turbo model
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           ...messages,
@@ -374,14 +374,33 @@ const ChatInterface = () => {
 
       // Add the assistant's response to the chat
       const responseText = completion.choices[0].message.content;
+      console.log("response", responseText)
+
       setMessages((prevMessages) => [
         ...prevMessages,
         { role: "assistant", content: responseText },
       ]);
 
       // Parse the response JSON and set the study plan
-      const responseJson = JSON.parse(responseText);
-      setStudyPlan(responseJson);
+      let responseJson;
+      try {
+        // Extract valid JSON from the response using regex
+        const jsonMatch = responseText.match(/{[\s\S]*}/); // Match the first JSON object
+        if (jsonMatch) {
+          const validJson = jsonMatch[0]; // Extract the matched JSON
+          responseJson = JSON.parse(validJson);
+          setStudyPlan(responseJson);
+        } else {
+          throw new Error("No valid JSON found in the response.");
+        }
+      } catch (jsonError) {
+        console.error("Invalid JSON response:", responseText);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { role: "assistant", content: "The response was not in the expected format. Please try again." },
+        ]);
+      }
+
     } catch (error) {
       console.error("Error:", error);
       setMessages((prevMessages) => [

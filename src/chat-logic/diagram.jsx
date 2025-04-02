@@ -8,7 +8,6 @@ const Node = ({ nodeDatum, isRoot, isMainNode, isSubNode }) => {
   useEffect(() => {
     if (textRef.current) {
       const bbox = textRef.current.getBBox();
-      console.log("bbox", bbox.width);
       setTextWidth(bbox.width);
     }
   }, [textRef.current]);
