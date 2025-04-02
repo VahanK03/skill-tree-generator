@@ -419,15 +419,15 @@ const ChatInterface = () => {
           </label>
         </div> */}
         <div>
-          <label className="prompt-label">
-            <span className="prompt"><b>Describe what change you need</b></span>
+          <div className="prompt-label">
+            {/* <span className="prompt"><b>Describe what change you need</b></span> */}
             <textarea 
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
               placeholder="I'm a career changer, I want to become a..."
               className="prompt-input"
             />
-          </label>
+          </div>
         </div>
         {/* <div>
           <label>
