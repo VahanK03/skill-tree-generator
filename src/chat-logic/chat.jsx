@@ -405,22 +405,8 @@ const ChatInterface = () => {
           sendMessage();
         }}
       >
-        {/* <div>
-          <label style={{display: "flex", flexDirection: "column"}}>
-            <span className="profession"><b>What is Your current profession?</b></span>
-            <input
-              type="text"
-              value={profession}
-              placeholder="Ex. Science Teacher"
-              onChange={(e) => setProfession(e.target.value)}
-              required
-              className="profession-input"
-            />
-          </label>
-        </div> */}
         <div>
           <div className="prompt-label">
-            {/* <span className="prompt"><b>Describe what change you need</b></span> */}
             <textarea 
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
@@ -429,48 +415,23 @@ const ChatInterface = () => {
             />
           </div>
         </div>
-        {/* <div>
-          <label>
-            <span className="future-profession"><b>What digital career do you want to pursue?</b></span>
-            <select
-              value={selectedProfession}
-              onChange={(e) => setSelectedProfession(e.target.value)}
-              required
-              className="future-profession-select"
-            >
-              <option value="Software Engineer">Software Engineer</option>
-              <option value="Data Scientist">Data Scientist</option>
-              <option value="Product Manager">Product Manager</option>
-              <option value="Designer">Designer</option>
-            </select>
-          </label>
-        </div> */}
-        {/* <div>
-          <label>
-            <span className="knowledge-level"><b>What is your experience level with digital roles?</b></span>
-            <select
-              value={selectedLevel}
-              onChange={(e) => setSelectedLevel(e.target.value)}
-              required
-              className="knowledge-level-select"
-            >
-              <option value="No Experience">No experience in digital roles</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Expert">Expert</option>
-            </select>
-          </label>
-        </div> */}
         <button type="submit" disabled={isLoading} className="submit-button">
           {isLoading ? "Creating..." : "Create My Skill Tree"}
         </button>
       </form>
-     
     </div>
+    {console.log(studyPlan)}
     {studyPlan && 
     <div style={{position: "absolute", top: "130%", width: "100%"}}>
-     <div style={{width: "100%", height: "80px", backgroundColor: "yellow", display: "flex", justifyContent: "center", alignItems: "center"}}> <h2>Generated road map for YOU</h2></div>
-    <TreeDiagram data={studyPlan} />
+      <div style={{width: "100%", height: "80px", backgroundColor: "yellow", display: "flex", justifyContent: "center", alignItems: "center"}}> 
+        <h2>Generated road map for YOU</h2>
+      </div>
+      {studyPlan !== null ? <TreeDiagram data={studyPlan} /> : <h1>No data available</h1>}
+    </div>
+    }
+    {messages.some(msg => msg.role === "assistant" && msg.content.includes("An error occurred")) && 
+    <div style={{position: "absolute", top: "150%", width: "100%", color: "red", textAlign: "center"}}>
+      <h2>An error occurred while generating your skill tree. Please try again later.</h2>
     </div>
     }
     </>
